@@ -1,8 +1,25 @@
 import * as React from "react";
-// import styles from './HolidayCalendar.module.scss';
+import { useEffect, useState } from "react";
+import { MSGraphClientV3 } from "@microsoft/sp-http";
+import * as MicrosoftGraph from "@microsoft/microsoft-graph-types";
 import type { IHolidayCalendarProps } from "./IHolidayCalendarProps";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import styles from "./HolidayCalendar.module.scss";
+
+// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+// import Popover from "react-bootstrap/Popover";
+
+// interface IFormattedEvent {
+//   subject: string;
+//   startDate: string;
+//   endDate: string;
+//   startTime: string;
+//   endTime: string;
+//   eventDate: string;
+//   bodyPreview?: string;
+//   joinUrl?: string;
+// }
 
 const HolidayCalendar = (props: IHolidayCalendarProps) => {
   var customStyles = `
@@ -51,7 +68,51 @@ const HolidayCalendar = (props: IHolidayCalendarProps) => {
     
   }
 
+  .fc .fc-daygrid-event {
+  
+    top: 30px;
+}
+
+  .fc-event:hover {
+    background: none;
+   }
+
   `;
+
+  const [holidays, setHolidays] = useState<MicrosoftGraph.Event[]>([]);
+
+  useEffect(() => {
+    props.context.msGraphClientFactory
+      .getClient("3")
+      .then((client: MSGraphClientV3) => {
+        client
+          .api(
+            "/me/calendars/AAMkADUwMWIzODc2LTcwY2QtNGY1My04YzcxLTFhZTU1YzczNTI5ZQBGAAAAAAByJZ33PWkKQ7eOS-iWPlvhBwCPizQU3LARRo-ydeIgMrs3AAAAAAEGAACPizQU3LARRo-ydeIgMrs3AABCzgaPAAA=/events"
+          )
+          .version("v1.0")
+          .select("*")
+          .get((error: any, eventsResponse, rawResponse?: any) => {
+            if (error) {
+              console.error("Message is: " + error);
+              return;
+            }
+
+            const holidayEvents: MicrosoftGraph.Event[] = eventsResponse.value;
+            setHolidays(holidayEvents);
+          });
+      });
+  }, [props.context.msGraphClientFactory]);
+
+  console.log(holidays);
+
+  const eventContent = (info: any) => {
+    const eventSubject = info.event.extendedProps.subject;
+    return (
+      <>
+        <div className={styles.title}>{eventSubject}</div>
+      </>
+    );
+  };
 
   return (
     <>
@@ -68,6 +129,13 @@ const HolidayCalendar = (props: IHolidayCalendarProps) => {
           prev: "chevron-left",
           next: "chevron-right",
         }}
+        events={holidays.map((event: any) => ({
+          title: event.subject,
+          start: new Date(event.start.dateTime),
+          end: new Date(event.end.dateTime),
+          extendedProps: { subject: event.subject },
+        }))}
+        eventContent={eventContent}
       />
     </>
   );

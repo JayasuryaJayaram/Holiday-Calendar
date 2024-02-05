@@ -1,4 +1,4 @@
-@import '~@fluentui/react/dist/sass/References.scss';
+@import "~@fluentui/react/dist/sass/References.scss";
 
 .holidayCalendar {
   overflow: hidden;
@@ -23,12 +23,30 @@
   a {
     text-decoration: none;
     color: "[theme:link, default:#03787c]";
-    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+    color: var(
+      --link
+    ); // note: CSS Custom Properties support is limited to modern browsers only
 
     &:hover {
       text-decoration: underline;
       color: "[theme:linkHovered, default: #014446]";
-      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+      color: var(
+        --linkHovered
+      ); // note: CSS Custom Properties support is limited to modern browsers only
     }
   }
+}
+
+.title {
+  background-color: #ea881a;
+  /* height: 25px; */
+  padding: 5px 13px;
+  width: -webkit-fill-available;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "Segoe UI Web (West European)", Segoe UI, -apple-system,
+    BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  overflow: hidden;
 }
