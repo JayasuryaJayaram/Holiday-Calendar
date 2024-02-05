@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "holiday-calendar-client-side-solution",
+    "id": "e26b09dc-6e2a-4fa0-81b2-f9350e8036a4",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Holiday Calendar description"
+      },
+      "longDescription": {
+        "default": "Holiday Calendar description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "holiday-calendar Feature",
+        "description": "The feature that activates elements of the holiday-calendar solution.",
+        "id": "53fac311-5b4c-4473-9f88-0cb7ec64e569",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/holiday-calendar.sppkg"
+  }
+}
