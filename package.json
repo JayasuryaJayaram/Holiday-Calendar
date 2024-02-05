@@ -23,12 +23,14 @@
     "@microsoft/sp-property-pane": "1.18.1",
     "@microsoft/sp-webpart-base": "1.18.1",
     "react": "17.0.1",
+    "react-bootstrap": "^2.10.0",
     "react-dom": "17.0.1",
     "tslib": "2.3.1"
   },
   "devDependencies": {
     "@microsoft/eslint-config-spfx": "1.18.1",
     "@microsoft/eslint-plugin-spfx": "1.18.1",
+    "@microsoft/microsoft-graph-types": "^2.40.0",
     "@microsoft/rush-stack-compiler-4.7": "0.1.0",
     "@microsoft/sp-build-web": "1.18.1",
     "@microsoft/sp-module-interfaces": "1.18.1",
