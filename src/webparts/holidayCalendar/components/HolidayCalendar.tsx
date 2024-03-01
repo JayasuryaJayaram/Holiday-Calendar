@@ -87,7 +87,7 @@ const HolidayCalendar = (props: IHolidayCalendarProps) => {
       .then((client: MSGraphClientV3) => {
         client
           .api(
-            "/me/calendars/AAMkADUwMWIzODc2LTcwY2QtNGY1My04YzcxLTFhZTU1YzczNTI5ZQBGAAAAAAByJZ33PWkKQ7eOS-iWPlvhBwCPizQU3LARRo-ydeIgMrs3AAAAAAEGAACPizQU3LARRo-ydeIgMrs3AABCzgaPAAA=/events"
+            "/me/calendars/AAMkADZiNWE1NGUyLTVkOWUtNDcwZC1hZmUzLWUxMTNjNGE2YzQwNwBGAAAAAAAEqUOhKKHkTbJ3IOgkAvxQBwAajaMNLQ2KR6UZ_yZT4TcrAAAAAAEGAAAajaMNLQ2KR6UZ_yZT4TcrAAAKY-3yAAA=/events"
           )
           .version("v1.0")
           .select("*")
